@@ -25,6 +25,10 @@ class ContactListVC: UIViewController {
         // UI Design
         btnAddContact.layer.cornerRadius = 0.5 * btnAddContact.bounds.size.width
         btnAddContact.clipsToBounds = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
         // Read records from the database
         persons = db.read()
