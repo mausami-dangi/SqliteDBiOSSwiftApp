@@ -13,6 +13,9 @@ class ContactListVC: UIViewController {
     @IBOutlet weak var btnAddContact: UIButton!
     @IBOutlet weak var contactListTableView: UITableView!
     
+    var persons:[Person] = []
+    var db:DBHelper = DBHelper()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +25,10 @@ class ContactListVC: UIViewController {
         // UI Design
         btnAddContact.layer.cornerRadius = 0.5 * btnAddContact.bounds.size.width
         btnAddContact.clipsToBounds = true
+        
+        // Read records from the database
+        persons = db.read()
+        contactListTableView.reloadData()
     }
     
     // MARK: IBActions
@@ -34,11 +41,12 @@ class ContactListVC: UIViewController {
 // MARK: Tableview Delegate & Datasource Methods
 extension ContactListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return persons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell", for: indexPath) as! ContactListCell
+        cell.contactName.text = persons[indexPath.row].firstName
         return cell
     }
     

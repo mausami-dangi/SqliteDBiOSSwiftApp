@@ -71,5 +71,26 @@ class DBHelper {
         }
         sqlite3_finalize(insertStatement)
     }
+    
+    //Fetch Data From Database
+    func read() -> [Person] {
+        let queryStatementString = "SELECT * FROM person;"
+        var queryStatement: OpaquePointer? = nil
+        var persons : [Person] = []
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {            
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let firstName = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
+                let lastName = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
+                let email = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
+                let phone = sqlite3_column_int64(queryStatement, 4)
+                let age = sqlite3_column_int(queryStatement, 5)
+                persons.append(Person(firstName: firstName, lastName: lastName, emailID: email, phoneNum: Int(phone), age: Int(age)))
+            }
+        } else {
+            print("SELECT statement could not be prepared")
+        }
+        sqlite3_finalize(queryStatement)
+        return persons
+    }
 
 }
