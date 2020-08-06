@@ -17,6 +17,12 @@ class AddContactVC: UIViewController {
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var ageTF: UITextField!
     @IBOutlet weak var btnSaveContact: UIButton!
+    @IBOutlet weak var btnAddPhoto: UIButton!
+    @IBOutlet weak var barBtnEdit: UIBarButtonItem!
+    
+    var isFromNewContact = false
+    var personObj: Person!
+    
     
     var db:DBHelper = DBHelper()
     let imagePicker = UIImagePickerController()
@@ -28,17 +34,43 @@ class AddContactVC: UIViewController {
         personImageView.layer.cornerRadius = personImageView.frame.height / 2
         personImageView.clipsToBounds = true
         
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
+        
         imagePicker.delegate = self
         
         db.createTable()
+        
+        // If User Wants to Edit Detail
+        firstNameTF.text = personObj.firstName
+        lastNameTF.text = personObj.lastName
+        phoneNumTF.text = String(personObj.phoneNum)
+        emailTF.text = personObj.emailID
+        ageTF.text = String(personObj.age)
+        // Convert Base 64 String from Database to Image
+        let dataDecoded:NSData = NSData(base64Encoded: personObj.personImage, options: NSData.Base64DecodingOptions(rawValue: 1))!
+        personImageView.image = UIImage(data: dataDecoded as Data)!
+        
+        
+        // If It's New Contact
+        if isFromNewContact == false {
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+            self.navigationItem.rightBarButtonItem?.tintColor = .systemBlue
+            btnAddPhoto.isEnabled = false
+            firstNameTF.isUserInteractionEnabled = false
+            lastNameTF.isUserInteractionEnabled = false
+            phoneNumTF.isUserInteractionEnabled = false
+            emailTF.isUserInteractionEnabled = false
+            ageTF.isUserInteractionEnabled = false
+        } 
     }
     
+    
+    //MARK: - Button Actions
     @IBAction func saveContactDetailBtnPressed(_ sender: Any) {
-        let image : UIImage = personImageView.image!
-        let imageData:NSData = image.pngData()! as NSData
+        //Convert Image Data into Base 64 String to store Image into Database
+        let imageData:NSData = personImageView.image!.pngData()! as NSData
         let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-        
-        
         
         db.insert(personImage: strBase64, firstname: firstNameTF.text!, lastname: lastNameTF.text!, emailid: emailTF.text!, phonenum: Int64(phoneNumTF.text!)!, age: Int(ageTF.text!)!)
         self.navigationController?.popViewController(animated: true)
@@ -49,11 +81,19 @@ class AddContactVC: UIViewController {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    @IBAction func editBarBtnPressed(_ sender: Any) {
+        btnAddPhoto.isEnabled = true
+        firstNameTF.isUserInteractionEnabled = true
+        lastNameTF.isUserInteractionEnabled = true
+        phoneNumTF.isUserInteractionEnabled = true
+        emailTF.isUserInteractionEnabled = true
+        ageTF.isUserInteractionEnabled = true
+    }
 }
 
 // MARK: - UIImagePicker Delegate Methods
 extension AddContactVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             personImageView.contentMode = .scaleAspectFit

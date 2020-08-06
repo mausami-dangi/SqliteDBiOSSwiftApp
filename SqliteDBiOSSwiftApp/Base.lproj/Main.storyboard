@@ -69,24 +69,6 @@
             </objects>
             <point key="canvasLocation" x="780" y="123"/>
         </scene>
-        <!--Contact DetailVC-->
-        <scene sceneID="fpz-NP-JBX">
-            <objects>
-                <viewController storyboardIdentifier="ContactDetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="teh-V0-5rh" customClass="ContactDetailVC" customModule="SqliteDBiOSSwiftApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ze5-75-YA1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="HB5-rx-rBB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="BCy-DK-cZz">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="8gV-Mg-NTc"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="v72-qE-mEc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="780" y="841"/>
-        </scene>
         <!--Add ContactVC-->
         <scene sceneID="O0E-z3-7me">
             <objects>
@@ -96,7 +78,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKt-H3-0KU">
-                                <rect key="frame" x="244" y="498" width="60" height="60"/>
+                                <rect key="frame" x="244" y="506" width="60" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="2Lr-CK-UBZ"/>
@@ -108,8 +90,8 @@
                                     <action selector="saveContactDetailBtnPressed:" destination="2ue-3O-6jK" eventType="touchUpInside" id="pTe-ti-UQQ"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="aoZ-tb-C89">
-                                <rect key="frame" x="105" y="52" width="110" height="110"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aoZ-tb-C89">
+                                <rect key="frame" x="105" y="60" width="110" height="110"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="Laa-SJ-1uT"/>
@@ -117,14 +99,14 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHl-Oc-SNh">
-                                <rect key="frame" x="124" y="170" width="72" height="30"/>
+                                <rect key="frame" x="124" y="178" width="72" height="30"/>
                                 <state key="normal" title="Add Photo"/>
                                 <connections>
                                     <action selector="addPhotoBtnPressed:" destination="2ue-3O-6jK" eventType="touchUpInside" id="xUt-UG-Fhs"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hiV-U4-Yb7">
-                                <rect key="frame" x="16" y="208" width="288" height="270"/>
+                                <rect key="frame" x="16" y="216" width="288" height="270"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPr-Ot-Tdw">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
@@ -311,7 +293,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="aoZ-tb-C89" firstAttribute="top" secondItem="2nU-3Y-LIs" secondAttribute="top" constant="8" id="9oB-9z-FfP"/>
+                            <constraint firstItem="aoZ-tb-C89" firstAttribute="top" secondItem="2nU-3Y-LIs" secondAttribute="top" constant="16" id="9oB-9z-FfP"/>
                             <constraint firstItem="hiV-U4-Yb7" firstAttribute="top" secondItem="XHl-Oc-SNh" secondAttribute="bottom" constant="8" id="I2K-Yd-zSw"/>
                             <constraint firstItem="XHl-Oc-SNh" firstAttribute="top" secondItem="aoZ-tb-C89" secondAttribute="bottom" constant="8" id="NzN-wO-OX0"/>
                             <constraint firstItem="2nU-3Y-LIs" firstAttribute="trailing" secondItem="hiV-U4-Yb7" secondAttribute="trailing" constant="16" id="bZx-Cy-bet"/>
@@ -323,9 +305,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2nU-3Y-LIs"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Spg-Tj-ceP"/>
+                    <navigationItem key="navigationItem" id="Spg-Tj-ceP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="3cJ-24-4jp">
+                            <connections>
+                                <action selector="editBarBtnPressed:" destination="2ue-3O-6jK" id="2ij-pU-qHz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ageTF" destination="SPR-Rc-fbN" id="XxS-Tc-RMn"/>
+                        <outlet property="barBtnEdit" destination="3cJ-24-4jp" id="BYZ-Fn-5YS"/>
+                        <outlet property="btnAddPhoto" destination="XHl-Oc-SNh" id="kXF-w2-gPk"/>
                         <outlet property="btnSaveContact" destination="kKt-H3-0KU" id="P5b-db-e8q"/>
                         <outlet property="emailTF" destination="L0L-Xt-NiX" id="XPN-Vn-sWm"/>
                         <outlet property="firstNameTF" destination="tif-fQ-sOZ" id="x22-f4-I2W"/>
@@ -373,24 +363,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQF-C2-xrg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1613" y="123"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="bBu-yE-Dqu">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FT3-sf-FTV" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kh5-6Q-S53">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="teh-V0-5rh" kind="relationship" relationship="rootViewController" id="Ht8-4J-oiP"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZqZ-ih-Mfa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="131" y="841"/>
         </scene>
     </scenes>
     <resources>

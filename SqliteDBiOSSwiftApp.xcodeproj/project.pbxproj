@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,7 +13,6 @@
 		7536C3B824CE8C7E009F4E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7536C3B624CE8C7E009F4E1C /* Main.storyboard */; };
 		7536C3BA24CE8C7F009F4E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7536C3B924CE8C7F009F4E1C /* Assets.xcassets */; };
 		7536C3BD24CE8C7F009F4E1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7536C3BB24CE8C7F009F4E1C /* LaunchScreen.storyboard */; };
-		7587A72E24D96538000AF2B3 /* ContactDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7587A72D24D96538000AF2B3 /* ContactDetailVC.swift */; };
 		758D6FE824CEF6D5009249E7 /* AddContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D6FE724CEF6D5009249E7 /* AddContactVC.swift */; };
 		758D6FEA24CEF6E9009249E7 /* ContactListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D6FE924CEF6E9009249E7 /* ContactListVC.swift */; };
 		758D6FED24CEF7F9009249E7 /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D6FEB24CEF7F9009249E7 /* ContactListCell.swift */; };
@@ -31,7 +30,6 @@
 		7536C3B924CE8C7F009F4E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7536C3BC24CE8C7F009F4E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7536C3BE24CE8C7F009F4E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7587A72D24D96538000AF2B3 /* ContactDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailVC.swift; sourceTree = "<group>"; };
 		758D6FE724CEF6D5009249E7 /* AddContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactVC.swift; sourceTree = "<group>"; };
 		758D6FE924CEF6E9009249E7 /* ContactListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListVC.swift; sourceTree = "<group>"; };
 		758D6FEB24CEF7F9009249E7 /* ContactListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 				8FD40AF5F6D2B72C508F164E /* Pods-SqliteDBiOSSwiftApp.debug.xcconfig */,
 				E2A756AF8484C6109C47DC8E /* Pods-SqliteDBiOSSwiftApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -113,7 +110,6 @@
 			children = (
 				758D6FE724CEF6D5009249E7 /* AddContactVC.swift */,
 				758D6FE924CEF6E9009249E7 /* ContactListVC.swift */,
-				7587A72D24D96538000AF2B3 /* ContactDetailVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -258,7 +254,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7587A72E24D96538000AF2B3 /* ContactDetailVC.swift in Sources */,
 				75E7EA6C24D2A28600C9187B /* Person.swift in Sources */,
 				758D6FED24CEF7F9009249E7 /* ContactListCell.swift in Sources */,
 				7536C3B124CE8C7E009F4E1C /* AppDelegate.swift in Sources */,
