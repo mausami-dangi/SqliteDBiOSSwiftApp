@@ -36,7 +36,7 @@ class DBHelper {
     
     // Create Table In Database
     func createTable() {
-        let createTableString = "CREATE TABLE IF NOT EXISTS person(Id INTEGER PRIMARY KEY, firstname TEXT, lastname TEXT, emailid TEXT, phonenum INTEGER, age INTEGER);"
+        let createTableString = "CREATE TABLE IF NOT EXISTS person(Id INTEGER PRIMARY KEY, personImage TEXT, firstname TEXT, lastname TEXT, emailid TEXT, phonenum INTEGER, age INTEGER);"
         var createTableStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
             if sqlite3_step(createTableStatement) == SQLITE_DONE {
@@ -51,15 +51,16 @@ class DBHelper {
     }
     
     // Insert Data into Database
-    func insert(firstname:String, lastname:String, emailid:String, phonenum: Int64, age: Int) {
-        let insertStatementString = "INSERT INTO person (firstname, lastname, emailid, phonenum, age) VALUES (?, ?, ?, ?, ?);"
+    func insert(personImage: String, firstname:String, lastname:String, emailid:String, phonenum: Int64, age: Int) {
+        let insertStatementString = "INSERT INTO person (personImage, firstname, lastname, emailid, phonenum, age) VALUES (?, ?, ?, ?, ?, ?);"
         var insertStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
-            sqlite3_bind_text(insertStatement, 1, (firstname as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 2, (lastname as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 3, (emailid as NSString).utf8String, -1, nil)
-            sqlite3_bind_int64(insertStatement, 4, Int64(phonenum))
-            sqlite3_bind_int(insertStatement, 5, Int32(Int(age)))
+            sqlite3_bind_text(insertStatement, 1, (personImage as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, (firstname as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, (lastname as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 4, (emailid as NSString).utf8String, -1, nil)
+            sqlite3_bind_int64(insertStatement, 5, Int64(phonenum))
+            sqlite3_bind_int(insertStatement, 6, Int32(Int(age)))
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
                 print("Successfully inserted row.")
@@ -77,14 +78,15 @@ class DBHelper {
         let queryStatementString = "SELECT * FROM person;"
         var queryStatement: OpaquePointer? = nil
         var persons : [Person] = []
-        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {            
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
             while sqlite3_step(queryStatement) == SQLITE_ROW {
-                let firstName = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
-                let lastName = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
-                let email = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
-                let phone = sqlite3_column_int64(queryStatement, 4)
-                let age = sqlite3_column_int(queryStatement, 5)
-                persons.append(Person(firstName: firstName, lastName: lastName, emailID: email, phoneNum: Int(phone), age: Int(age)))
+                let personImage = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
+                let firstName = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
+                let lastName = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
+                let email = String(describing: String(cString: sqlite3_column_text(queryStatement, 4)))
+                let phone = sqlite3_column_int64(queryStatement, 5)
+                let age = sqlite3_column_int(queryStatement, 6)
+                persons.append(Person(personImage: personImage, firstName: firstName, lastName: lastName, emailID: email, phoneNum: Int(phone), age: Int(age)))
             }
         } else {
             print("SELECT statement could not be prepared")

@@ -13,8 +13,12 @@ class ContactListVC: UIViewController {
     @IBOutlet weak var btnAddContact: UIButton!
     @IBOutlet weak var contactListTableView: UITableView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var persons:[Person] = []
     var db:DBHelper = DBHelper()
+    
+    var filteredData: [Person]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,8 @@ class ContactListVC: UIViewController {
         
         // Read records from the database
         persons = db.read()
+        
+        filteredData = persons
         contactListTableView.reloadData()
     }
     
@@ -50,11 +56,27 @@ extension ContactListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell", for: indexPath) as! ContactListCell
+        let dataDecoded:NSData = NSData(base64Encoded: persons[indexPath.row].personImage, options: NSData.Base64DecodingOptions(rawValue: 1))!
+        cell.contactImageView?.image = UIImage(data: dataDecoded as Data)!
         cell.contactName.text = persons[indexPath.row].firstName
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let contactDetailVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ContactDetailVC") as? ContactDetailVC
+        self.navigationController?.pushViewController(contactDetailVC!, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+}
+
+// MARK: SearchBar Delegate
+extension ContactListVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredData = searchText.isEmpty ? persons : persons.filter { (item: Person) -> Bool in
+            return item.firstName.range(of: searchText, options: .caseInsensitive, range: nil) != nil
+        }
     }
 }
