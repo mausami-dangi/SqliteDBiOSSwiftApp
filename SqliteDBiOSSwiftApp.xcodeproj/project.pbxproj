@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05BAA1C734E74DC9D7F798D7 /* Pods_SqliteDBiOSSwiftApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B529EB4A5B7E4AB55913372 /* Pods_SqliteDBiOSSwiftApp.framework */; };
 		7536C3B124CE8C7E009F4E1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7536C3B024CE8C7E009F4E1C /* AppDelegate.swift */; };
 		7536C3B324CE8C7E009F4E1C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7536C3B224CE8C7E009F4E1C /* SceneDelegate.swift */; };
 		7536C3B824CE8C7E009F4E1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7536C3B624CE8C7E009F4E1C /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B529EB4A5B7E4AB55913372 /* Pods_SqliteDBiOSSwiftApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SqliteDBiOSSwiftApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7536C3AD24CE8C7E009F4E1C /* SqliteDBiOSSwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SqliteDBiOSSwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7536C3B024CE8C7E009F4E1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7536C3B224CE8C7E009F4E1C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +38,8 @@
 		758D6FEC24CEF7F9009249E7 /* ContactListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListCell.xib; sourceTree = "<group>"; };
 		75E7EA6B24D2A28600C9187B /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		75E7EA6E24D2A4CB00C9187B /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		8FD40AF5F6D2B72C508F164E /* Pods-SqliteDBiOSSwiftApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SqliteDBiOSSwiftApp.debug.xcconfig"; path = "Target Support Files/Pods-SqliteDBiOSSwiftApp/Pods-SqliteDBiOSSwiftApp.debug.xcconfig"; sourceTree = "<group>"; };
+		E2A756AF8484C6109C47DC8E /* Pods-SqliteDBiOSSwiftApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SqliteDBiOSSwiftApp.release.xcconfig"; path = "Target Support Files/Pods-SqliteDBiOSSwiftApp/Pods-SqliteDBiOSSwiftApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +47,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05BAA1C734E74DC9D7F798D7 /* Pods_SqliteDBiOSSwiftApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53CB6C0CBFB966F0B276692B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8FD40AF5F6D2B72C508F164E /* Pods-SqliteDBiOSSwiftApp.debug.xcconfig */,
+				E2A756AF8484C6109C47DC8E /* Pods-SqliteDBiOSSwiftApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7536C3A424CE8C7E009F4E1C = {
 			isa = PBXGroup;
 			children = (
 				7536C3AF24CE8C7E009F4E1C /* SqliteDBiOSSwiftApp */,
 				7536C3AE24CE8C7E009F4E1C /* Products */,
+				53CB6C0CBFB966F0B276692B /* Pods */,
+				F343847F34EFB041495C8878 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +134,14 @@
 			path = DBHelper;
 			sourceTree = "<group>";
 		};
+		F343847F34EFB041495C8878 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B529EB4A5B7E4AB55913372 /* Pods_SqliteDBiOSSwiftApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,9 +149,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7536C3C124CE8C7F009F4E1C /* Build configuration list for PBXNativeTarget "SqliteDBiOSSwiftApp" */;
 			buildPhases = (
+				96BC64ED76950F917844238C /* [CP] Check Pods Manifest.lock */,
 				7536C3A924CE8C7E009F4E1C /* Sources */,
 				7536C3AA24CE8C7E009F4E1C /* Frameworks */,
 				7536C3AB24CE8C7E009F4E1C /* Resources */,
+				59D5FC3458CDB440BDEEB4C2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,6 +210,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		59D5FC3458CDB440BDEEB4C2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SqliteDBiOSSwiftApp/Pods-SqliteDBiOSSwiftApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SqliteDBiOSSwiftApp/Pods-SqliteDBiOSSwiftApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SqliteDBiOSSwiftApp/Pods-SqliteDBiOSSwiftApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96BC64ED76950F917844238C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SqliteDBiOSSwiftApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7536C3A924CE8C7E009F4E1C /* Sources */ = {
@@ -338,16 +407,20 @@
 		};
 		7536C3C224CE8C7F009F4E1C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FD40AF5F6D2B72C508F164E /* Pods-SqliteDBiOSSwiftApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = ZWQG3HL9Z7;
 				INFOPLIST_FILE = SqliteDBiOSSwiftApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.company.SqliteDBiOSSwiftApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RastrackApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Rastrack_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,16 +428,20 @@
 		};
 		7536C3C324CE8C7F009F4E1C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2A756AF8484C6109C47DC8E /* Pods-SqliteDBiOSSwiftApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = ZWQG3HL9Z7;
 				INFOPLIST_FILE = SqliteDBiOSSwiftApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.company.SqliteDBiOSSwiftApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RastrackApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Rastrack_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
