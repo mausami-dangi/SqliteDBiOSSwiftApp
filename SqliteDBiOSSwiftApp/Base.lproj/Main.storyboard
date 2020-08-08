@@ -30,6 +30,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="GXK-Ws-Xgr"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDY-gy-wZh">
+                                <rect key="frame" x="0.0" y="100" width="320" height="468"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Contact Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-Tx-nmi">
+                                        <rect key="frame" x="97.5" y="225" width="125" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="wFG-Tx-nmi" firstAttribute="centerY" secondItem="PDY-gy-wZh" secondAttribute="centerY" id="MMy-YR-JnQ"/>
+                                    <constraint firstItem="wFG-Tx-nmi" firstAttribute="centerX" secondItem="PDY-gy-wZh" secondAttribute="centerX" id="Veb-3A-A2a"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJG-vi-oS4">
                                 <rect key="frame" x="244" y="492" width="60" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -46,14 +62,18 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="PDY-gy-wZh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="98R-xD-30f"/>
+                            <constraint firstItem="PDY-gy-wZh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Km-LV-tU5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SJG-vi-oS4" secondAttribute="trailing" constant="16" id="CHe-Wq-6dI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ke8-m5-U9A" secondAttribute="trailing" id="CwG-Cn-D8P"/>
                             <constraint firstItem="nOn-m4-AZO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IJZ-Rv-Mih"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SJG-vi-oS4" secondAttribute="bottom" constant="16" id="Tp2-jR-gVI"/>
+                            <constraint firstItem="PDY-gy-wZh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="mPH-xt-fML"/>
                             <constraint firstItem="nOn-m4-AZO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mir-bj-JZG"/>
                             <constraint firstItem="Ke8-m5-U9A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qyX-BO-hMC"/>
                             <constraint firstItem="Ke8-m5-U9A" firstAttribute="top" secondItem="nOn-m4-AZO" secondAttribute="bottom" id="sHu-FG-wlC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ke8-m5-U9A" secondAttribute="bottom" id="sQx-nc-LRI"/>
+                            <constraint firstItem="PDY-gy-wZh" firstAttribute="top" secondItem="nOn-m4-AZO" secondAttribute="bottom" id="xPe-Od-8Kb"/>
                             <constraint firstItem="nOn-m4-AZO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yVF-hS-Wne"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -62,12 +82,13 @@
                     <connections>
                         <outlet property="btnAddContact" destination="SJG-vi-oS4" id="PD4-vi-ypK"/>
                         <outlet property="contactListTableView" destination="Ke8-m5-U9A" id="eFi-IF-yxe"/>
+                        <outlet property="noContactView" destination="PDY-gy-wZh" id="1pB-LI-8FW"/>
                         <outlet property="searchBar" destination="nOn-m4-AZO" id="cSr-eQ-2EO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="123"/>
+            <point key="canvasLocation" x="780" y="122.53521126760563"/>
         </scene>
         <!--Add ContactVC-->
         <scene sceneID="O0E-z3-7me">

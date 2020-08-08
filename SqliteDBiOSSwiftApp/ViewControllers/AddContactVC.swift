@@ -9,7 +9,7 @@
 import UIKit
 
 class AddContactVC: UIViewController {
-
+    
     @IBOutlet weak var personImageView: UIImageView!
     @IBOutlet weak var firstNameTF: UITextField!
     @IBOutlet weak var lastNameTF: UITextField!
@@ -22,7 +22,7 @@ class AddContactVC: UIViewController {
     
     var isFromNewContact = false
     var personObj: Person!
-
+    
     var db:DBHelper = DBHelper()
     let imagePicker = UIImagePickerController()
     
@@ -38,7 +38,6 @@ class AddContactVC: UIViewController {
         imagePicker.delegate = self
         
         db.createTable()
-        
         
         if isFromNewContact == true {
             

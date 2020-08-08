@@ -13,6 +13,7 @@ class ContactListVC: UIViewController {
     @IBOutlet weak var btnAddContact: UIButton!
     @IBOutlet weak var contactListTableView: UITableView!    
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var noContactView: UIView!
     
     var persons:[Person] = []
     var db:DBHelper = DBHelper()
@@ -37,7 +38,15 @@ class ContactListVC: UIViewController {
         
         // Assign all records to the Search Array Data
         searchDataArray = persons
-        contactListTableView.reloadData()
+        searchBar.text = ""
+        if searchDataArray.count > 0 {
+            noContactView.isHidden = true
+            self.contactListTableView.isHidden = false
+            contactListTableView.reloadData()
+        } else {
+            noContactView.isHidden = false
+            contactListTableView.isHidden = true
+        }
     }
     
     // MARK: - IBActions
@@ -101,6 +110,14 @@ extension ContactListVC: UISearchBarDelegate {
         searchDataArray = searchText.isEmpty ? persons : persons.filter { (item: Person) -> Bool in
             return item.firstName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
-        contactListTableView.reloadData()
+        
+        if self.searchDataArray.count > 0 {
+            self.noContactView.isHidden = true
+            self.contactListTableView.isHidden = false
+            self.contactListTableView.reloadData()
+        } else {
+            self.noContactView.isHidden = false
+            self.contactListTableView.isHidden = true
+        }
     }
 }
