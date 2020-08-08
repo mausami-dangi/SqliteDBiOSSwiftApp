@@ -12,14 +12,10 @@ class ContactListVC: UIViewController {
         
     @IBOutlet weak var btnAddContact: UIButton!
     @IBOutlet weak var contactListTableView: UITableView!
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    
+        
     var persons:[Person] = []
     var db:DBHelper = DBHelper()
-    
-    var filteredData: [Person]!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,8 +32,6 @@ class ContactListVC: UIViewController {
         
         // Read records from the database
         persons = db.read()
-        
-        filteredData = persons
         contactListTableView.reloadData()
     }
     
@@ -70,14 +64,5 @@ extension ContactListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
-    }
-}
-
-// MARK: SearchBar Delegate
-extension ContactListVC: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredData = searchText.isEmpty ? persons : persons.filter { (item: Person) -> Bool in
-            return item.firstName.range(of: searchText, options: .caseInsensitive, range: nil) != nil
-        }
     }
 }

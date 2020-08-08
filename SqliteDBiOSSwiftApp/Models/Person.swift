@@ -9,6 +9,7 @@
 import Foundation
 
 class Person {
+    var id: Int = 0
     var personImage: String = ""
     var firstName: String = ""
     var lastName: String = ""
@@ -16,7 +17,8 @@ class Person {
     var phoneNum: Int = 0
     var age: Int = 0
     
-    init(personImage: String, firstName: String, lastName: String, emailID: String, phoneNum: Int, age: Int) {
+    init(id: Int, personImage: String, firstName: String, lastName: String, emailID: String, phoneNum: Int, age: Int) {
+        self.id = id
         self.personImage = personImage
         self.firstName = firstName
         self.lastName = lastName

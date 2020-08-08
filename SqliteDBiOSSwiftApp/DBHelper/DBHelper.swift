@@ -21,7 +21,7 @@ class DBHelper {
     
     // Open Database
     func openDatabase() -> OpaquePointer? {
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(dbPath)
+        let fileURL = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(dbPath)
         var db: OpaquePointer? = nil
         print("Database Path : \(fileURL.path)")
         if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
@@ -80,13 +80,14 @@ class DBHelper {
         var persons : [Person] = []
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
             while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let id = sqlite3_column_int(queryStatement, 0)
                 let personImage = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
                 let firstName = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
                 let lastName = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
                 let email = String(describing: String(cString: sqlite3_column_text(queryStatement, 4)))
                 let phone = sqlite3_column_int64(queryStatement, 5)
                 let age = sqlite3_column_int(queryStatement, 6)
-                persons.append(Person(personImage: personImage, firstName: firstName, lastName: lastName, emailID: email, phoneNum: Int(phone), age: Int(age)))
+                persons.append(Person(id: Int(id), personImage: personImage, firstName: firstName, lastName: lastName, emailID: email, phoneNum: Int(phone), age: Int(age)))
             }
         } else {
             print("SELECT statement could not be prepared")
@@ -94,5 +95,21 @@ class DBHelper {
         sqlite3_finalize(queryStatement)
         return persons
     }
-
+    
+    // Update Data Into Database
+    func update(id: Int, firstname:String, lastname:String, emailid:String, phonenum: Int64, age: Int) {
+    var updateStatement: OpaquePointer?
+        let updateStatementString = "UPDATE person SET firstname = '\(firstname)', lastname = '\(lastname)', emailid = '\(emailid)', phonenum = \(phonenum), age = \(age) WHERE id = \(id);"
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) ==
+            SQLITE_OK {
+            if sqlite3_step(updateStatement) == SQLITE_DONE {
+                print("\nSuccessfully updated row.")
+            } else {
+                print("\nCould not update row.")
+            }
+        } else {
+            print("\nUPDATE statement is not prepared")
+        }
+        sqlite3_finalize(updateStatement)
+    }
 }
