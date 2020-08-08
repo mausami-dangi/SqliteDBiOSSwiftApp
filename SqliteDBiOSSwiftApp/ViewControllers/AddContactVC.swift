@@ -39,10 +39,15 @@ class AddContactVC: UIViewController {
         
         db.createTable()
         
+        
         if isFromNewContact == true {
+            
+            // If It is new Contact
             self.navigationItem.rightBarButtonItem?.isEnabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
         } else {
+            
+            // If Edit / Update Contact
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             self.navigationItem.rightBarButtonItem?.tintColor = .systemBlue
             

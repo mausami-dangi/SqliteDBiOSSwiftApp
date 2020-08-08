@@ -9,13 +9,15 @@
 import UIKit
 
 class ContactListVC: UIViewController {
-        
+    
     @IBOutlet weak var btnAddContact: UIButton!
-    @IBOutlet weak var contactListTableView: UITableView!
-        
+    @IBOutlet weak var contactListTableView: UITableView!    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var persons:[Person] = []
     var db:DBHelper = DBHelper()
-        
+    var searchDataArray: [Person]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +34,9 @@ class ContactListVC: UIViewController {
         
         // Read records from the database
         persons = db.read()
+        
+        // Assign all records to the Search Array Data
+        searchDataArray = persons
         contactListTableView.reloadData()
     }
     
@@ -46,19 +51,19 @@ class ContactListVC: UIViewController {
 // MARK: Tableview Delegate & Datasource Methods
 extension ContactListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return persons.count
+        return searchDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell", for: indexPath) as! ContactListCell
-        cell.contactName.text = persons[indexPath.row].firstName
+        cell.contactName.text = searchDataArray[indexPath.row].firstName
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let addContactVC = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AddContactVC") as? AddContactVC
         addContactVC?.isFromNewContact = false
-        addContactVC?.personObj = persons[indexPath.row]
+        addContactVC?.personObj = searchDataArray[indexPath.row]
         self.navigationController?.pushViewController(addContactVC!, animated: true)
     }
     
@@ -74,10 +79,11 @@ extension ContactListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             let alert = UIAlertController(title: "", message: "Are you sure you want to delete?", preferredStyle: .alert)
-
+            
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-                self.db.delete(id: self.persons[indexPath.row].id)
+                self.db.delete(id: self.searchDataArray[indexPath.row].id)
                 self.persons = self.db.read()
+                self.searchDataArray = self.persons
                 self.contactListTableView.reloadData()
             }))
             
@@ -86,5 +92,15 @@ extension ContactListVC: UITableViewDelegate, UITableViewDataSource {
             }))
             self.present(alert, animated: true)
         }
+    }
+}
+
+// MARK: SearchBar Delegate Methods
+extension ContactListVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchDataArray = searchText.isEmpty ? persons : persons.filter { (item: Person) -> Bool in
+            return item.firstName.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+        contactListTableView.reloadData()
     }
 }
