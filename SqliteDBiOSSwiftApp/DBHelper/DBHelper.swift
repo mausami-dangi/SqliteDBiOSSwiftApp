@@ -98,10 +98,9 @@ class DBHelper {
     
     // Update Data Into Database
     func update(id: Int, firstname:String, lastname:String, emailid:String, phonenum: Int64, age: Int) {
-    var updateStatement: OpaquePointer?
+        var updateStatement: OpaquePointer?
         let updateStatementString = "UPDATE person SET firstname = '\(firstname)', lastname = '\(lastname)', emailid = '\(emailid)', phonenum = \(phonenum), age = \(age) WHERE id = \(id);"
-        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) ==
-            SQLITE_OK {
+        if sqlite3_prepare_v2(db, updateStatementString, -1, &updateStatement, nil) == SQLITE_OK {
             if sqlite3_step(updateStatement) == SQLITE_DONE {
                 print("\nSuccessfully updated row.")
             } else {
@@ -111,5 +110,21 @@ class DBHelper {
             print("\nUPDATE statement is not prepared")
         }
         sqlite3_finalize(updateStatement)
+    }
+    
+    // Delete Data From Database
+    func delete(id: Int) {
+        var deleteStatement: OpaquePointer?
+        let deleteStatementString = "DELETE FROM person WHERE id = \(id);"
+        if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("\nSuccessfully deleted row.")
+            } else {
+                print("\nCould not delete row.")
+            }
+        } else {
+            print("\nDELETE statement could not be prepared")
+        }
+        sqlite3_finalize(deleteStatement)
     }
 }

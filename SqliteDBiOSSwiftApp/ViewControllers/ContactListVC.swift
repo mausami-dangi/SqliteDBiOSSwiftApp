@@ -65,4 +65,26 @@ extension ContactListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+    
+    // Follow 2 Methods for Swipe To Delete Operation
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            let alert = UIAlertController(title: "", message: "Are you sure you want to delete?", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                self.db.delete(id: self.persons[indexPath.row].id)
+                self.persons = self.db.read()
+                self.contactListTableView.reloadData()
+            }))
+            
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { action in
+                print("NO")
+            }))
+            self.present(alert, animated: true)
+        }
+    }
 }
