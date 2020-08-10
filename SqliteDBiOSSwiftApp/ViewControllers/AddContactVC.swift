@@ -34,6 +34,8 @@ class AddContactVC: UIViewController {
         personImageView.clipsToBounds = true
         btnSaveContact.layer.cornerRadius = 0.5 * btnSaveContact.bounds.size.width
         btnSaveContact.clipsToBounds = true
+        phoneNumTF.keyboardType = .numberPad
+        ageTF.keyboardType = .numberPad
         
         imagePicker.delegate = self
         
@@ -113,5 +115,16 @@ extension AddContactVC: UIImagePickerControllerDelegate, UINavigationControllerD
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion:nil)
+    }
+}
+
+extension AddContactVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        firstNameTF.resignFirstResponder()
+        lastNameTF.resignFirstResponder()
+        emailTF.resignFirstResponder()
+        phoneNumTF.resignFirstResponder()
+        ageTF.resignFirstResponder()
+        return true
     }
 }

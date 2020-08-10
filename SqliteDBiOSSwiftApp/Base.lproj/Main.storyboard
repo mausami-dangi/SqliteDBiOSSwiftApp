@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nOn-m4-AZO">
+                            <searchBar contentMode="redraw" placeholder="Seach Contact" translatesAutoresizingMaskIntoConstraints="NO" id="nOn-m4-AZO">
                                 <rect key="frame" x="0.0" y="44" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="100" width="320" height="468"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Contact Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-Tx-nmi">
-                                        <rect key="frame" x="97.5" y="225" width="125" height="18"/>
+                                        <rect key="frame" x="97.5" y="195" width="125" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="wFG-Tx-nmi" firstAttribute="centerY" secondItem="PDY-gy-wZh" secondAttribute="centerY" id="MMy-YR-JnQ"/>
+                                    <constraint firstItem="wFG-Tx-nmi" firstAttribute="centerY" secondItem="PDY-gy-wZh" secondAttribute="centerY" constant="-30" id="MMy-YR-JnQ"/>
                                     <constraint firstItem="wFG-Tx-nmi" firstAttribute="centerX" secondItem="PDY-gy-wZh" secondAttribute="centerX" id="Veb-3A-A2a"/>
                                 </constraints>
                             </view>
@@ -143,6 +143,9 @@
                                                 <rect key="frame" x="36" y="16" width="244" height="18.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="2ue-3O-6jK" id="t5h-Xp-Vb9"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z5T-Ey-BFs">
                                                 <rect key="frame" x="0.0" y="49" width="288" height="1"/>
@@ -179,6 +182,9 @@
                                                 <rect key="frame" x="36" y="16" width="244" height="18.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="2ue-3O-6jK" id="9br-m2-I3X"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2c-8Z-IRL">
                                                 <rect key="frame" x="0.0" y="49" width="288" height="1"/>
@@ -215,6 +221,9 @@
                                                 <rect key="frame" x="36" y="16" width="244" height="18.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="2ue-3O-6jK" id="Tyo-dQ-fRZ"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32m-AY-J7U">
                                                 <rect key="frame" x="0.0" y="49" width="288" height="1"/>
@@ -251,6 +260,9 @@
                                                 <rect key="frame" x="36" y="16" width="244" height="18.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="2ue-3O-6jK" id="FZG-aE-8CW"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQF-aW-ijs">
                                                 <rect key="frame" x="0.0" y="49" width="288" height="1"/>
@@ -287,6 +299,9 @@
                                                 <rect key="frame" x="36" y="16" width="244" height="18.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="2ue-3O-6jK" id="roE-WO-QTL"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gcy-Ri-umk">
                                                 <rect key="frame" x="0.0" y="49" width="288" height="1"/>

@@ -93,7 +93,14 @@ extension ContactListVC: UITableViewDelegate, UITableViewDataSource {
                 self.db.delete(id: self.searchDataArray[indexPath.row].id)
                 self.persons = self.db.read()
                 self.searchDataArray = self.persons
-                self.contactListTableView.reloadData()
+                if self.searchDataArray.count > 0 {
+                    self.noContactView.isHidden = true
+                    self.contactListTableView.isHidden = false
+                    self.contactListTableView.reloadData()
+                } else {
+                    self.noContactView.isHidden = false
+                    self.contactListTableView.isHidden = true
+                }
             }))
             
             alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { action in
@@ -119,5 +126,9 @@ extension ContactListVC: UISearchBarDelegate {
             self.noContactView.isHidden = false
             self.contactListTableView.isHidden = true
         }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
